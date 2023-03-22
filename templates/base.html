@@ -1,0 +1,125 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+
+
+    <title>{% block title %}{% endblock title %}| Port Gallery</title>
+    <!-- staticでfavicon.icoのURLを生成する -->
+    <link rel="icon" type="image/x-icon" href={% static 'assets/favicon.ico' %} />
+
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ページのヘッダー-->
+    <header>
+        <!-- ナビゲーションバーのヘッダー-->
+        <div class="collapse bg-dark" id="navbarHeader">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-7 py-4">
+                        <!-- ヘッダーのタイトルと本文-->
+                        <h4 class="text-white">お気に入りを見つけよう！</h4>
+                        <p class="text-muted">
+                            誰でも参加できるポートフォリオ投稿サイトです。
+                            <br>
+                            自分で制作したポートフォリオなら何でもオッケー！
+                            コメントも付けてみてください！
+                        </p>
+                    </div>
+                    <div class="col-sm-4 offset-md-1 py-4">
+                        <h4 class="text-white">Menu</h4>
+                        <ul class="list-unstyled">
+                            <!-- ナビゲーションメニュー-->
+                            {% if request.user.is_authenticated %}
+                            <!-- ログイン中のメニュー-->
+                            <li><a href="{% url 'index' %}" class="text-white">ポートフォリオ一覧</a></li>
+                            <li><a href="{% url 'create-book' %}" class="text-white">ポートフォリオ登録</a></li>
+                            <li><a href="{% url 'accounts:logout' %}" class="text-white">ログアウト</a></li>
+                            {% else %}
+                            <!-- ログイン状態ではない場合のメニュー-->
+                            <li><a href="{% url 'accounts:signup' %}" class="text-white">サインアップ</a></li>
+                            <li><a href="{% url 'accounts:login' %}" class="text-white">ログイン</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ナビゲーションバー-->
+        <div class="navbar navbar-dark bg-dark shadow-sm">
+            <div class="container">
+                <!-- トップページへのリンク-->
+                <a href="{% url 'index' %}" class="navbar-brand d-flex align-items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor"
+                        stroke-linecap="round" stroke-linejoin="round" stroke-width="2" aria-hidden="true" class="me-2"
+                        viewBox="0 0 24 24">
+                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+                        <circle cx="12" cy="13" r="4" />
+                    </svg>
+                    <!-- リンクテキスト-->
+                    <strong>Port Gallery</strong>
+                </a>
+                <!-- トグルボタン-->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
+                    aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ-->
+    <main>
+        <!-- <main>タグの要素をすべて削除して以下に書き換え-->
+        <!-- メインコンテンツの本体部分は各ページのテンプレートで埋め込む-->
+        {% block content %}{% endblock content %}
+    </main>
+
+    <!-- フッター -->
+    <footer class="text-muted py-5">
+        <div class="container">
+            <p class="float-end mb-1">
+                <a href="#">Back to top</a>
+            </p>
+            <!-- フッターのテキストを任意のものに書き換え-->
+            <p class="mb-1">
+                Port Gallery is &copy; Bootstrap, but please post a lot!</p>
+        </div>
+    </footer>
+
+    <!-- BootstrapからJavaScriptを読み込むコードをコピーして貼り付け-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
