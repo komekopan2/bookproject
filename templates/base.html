@@ -11,7 +11,7 @@
     <meta name="generator" content="Hugo 0.84.0">
 
 
-    <title>{% block title %}{% endblock title %}| Port Gallery</title>
+    <title>{% block title %}{% endblock title %}| Product Gallery</title>
     <!-- staticでfavicon.icoのURLを生成する -->
     <link rel="icon" type="image/x-icon" href={% static 'assets/favicon.ico' %} />
 
@@ -48,9 +48,9 @@
                         <!-- ヘッダーのタイトルと本文-->
                         <h4 class="text-white">お気に入りを見つけよう！</h4>
                         <p class="text-muted">
-                            誰でも参加できるポートフォリオ投稿サイトです。
+                            誰でも参加できるプロダクト投稿サイトです。
                             <br>
-                            自分で制作したポートフォリオなら何でもオッケー！
+                            自分で制作したプロダクトなら何でもオッケー！
                             コメントも付けてみてください！
                         </p>
                     </div>
@@ -60,8 +60,8 @@
                             <!-- ナビゲーションメニュー-->
                             {% if request.user.is_authenticated %}
                             <!-- ログイン中のメニュー-->
-                            <li><a href="{% url 'index' %}" class="text-white">ポートフォリオ一覧</a></li>
-                            <li><a href="{% url 'create-book' %}" class="text-white">ポートフォリオ登録</a></li>
+                            <li><a href="{% url 'index' %}" class="text-white">プロダクト一覧</a></li>
+                            <li><a href="{% url 'create-book' %}" class="text-white">プロダクト登録</a></li>
                             <li><a href="{% url 'accounts:logout' %}" class="text-white">ログアウト</a></li>
                             {% else %}
                             <!-- ログイン状態ではない場合のメニュー-->
@@ -85,7 +85,7 @@
                         <circle cx="12" cy="13" r="4" />
                     </svg>
                     <!-- リンクテキスト-->
-                    <strong>Port Gallery</strong>
+                    <strong>Product Gallery</strong>
                 </a>
                 <!-- トグルボタン-->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader"
@@ -111,7 +111,7 @@
             </p>
             <!-- フッターのテキストを任意のものに書き換え-->
             <p class="mb-1">
-                Port Gallery is &copy; Bootstrap, but please post a lot!</p>
+                Product Gallery is &copy; Bootstrap, but please post a lot!</p>
         </div>
     </footer>
 

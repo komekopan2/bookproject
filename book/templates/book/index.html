@@ -10,15 +10,15 @@
     <div class="row py-lg-5">
         <div class="col-lg-6 col-md-8 mx-auto">
             <!-- タイトルと本文 -->
-            <h1 class="fw-light">Port Gallery</h1>
+            <h1 class="fw-light">Product Gallery</h1>
             <p class="lead text-muted">
-                ポートフォリオの投稿サイトです。サムネイルも付けてくださいね！
+                プロダクトの投稿サイトです。サムネイルも付けてくださいね！
             </p>
             <p>
                 <!-- ナビゲーションボタン -->
                 {% if request.user.is_authenticated %}
                 <!-- ログイン中のボタン -->
-                <a href="{% url 'create-book' %}" class="btn btn-primary my-2">ポートフォリオ登録</a>
+                <a href="{% url 'create-book' %}" class="btn btn-primary my-2">プロダクト登録</a>
                 <a href="{% url 'accounts:logout' %}" class="btn btn-secondary my-2">ログアウト</a>
                 {% else %}
                 <!-- ログイン状態ではない場合のボタン -->
@@ -48,50 +48,49 @@
                         height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
                         preserveAspectRatio="xMidYMid slice" focusable="false">
 
-                    <title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#55595c" />
-                    </img>
+
                     {% else %}
                     <img src="{% static 'book/noimage.png' %}" class="bd-placeholder-img card-img-top" width="100%"
                         height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
                         preserveAspectRatio="xMidYMid slice" focusable="false">
 
+
+                    {% endif %}
                     <title>Placeholder</title>
                     <rect width="100%" height="100%" fill="#55595c" />
-                    </img>
-                </div>
-                {% endif %}
-                <!-- タイトルとボタンを出力するブロック -->
-                <div class="card-body">
-                    <p class="card-text">
-                        <!-- titleフィールドを出力 -->
-                        {{item.title}}
-                    </p>
-                    <div class="d-flex justify-content-between align-items-center">
-                        <div class="btn-group">
-                            <!-- 詳細ページを表示するボタン -->
-                            <button type="button" class="btn btn-sm btn-outline-secondary"
-                                onclick="location.href='{% url 'detail-book' item.pk %}'">
-                                View</button>
-                            <!-- カテゴリを表示するボタン -->
+
+
+                    <!-- タイトルとボタンを出力するブロック -->
+                    <div class="card-body">
+                        <p class="card-text">
+                            <!-- titleフィールドを出力 -->
+                            {{item.title}}
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <!-- 詳細ページを表示するボタン -->
+                                <button type="button" class="btn btn-sm btn-outline-secondary"
+                                    onclick="location.href='{% url 'detail-book' item.pk %}'">
+                                    View</button>
+                                <!-- カテゴリを表示するボタン -->
+
+                            </div>
+                            <!-- 投稿したユーザー名を出力-->
+                            <small class="text-muted">
+                                (投稿ユーザー: {{item.user}})</small>
+
 
                         </div>
-                        <!-- 投稿したユーザー名を出力-->
-                        <small class="text-muted">
-                            (投稿ユーザー: {{item.user}})</small>
-
-
                     </div>
                 </div>
+                <!-- 列要素ここまで -->
             </div>
-            <!-- 列要素ここまで -->
+            <!-- forブロック終了 -->
+            {% endfor %}
+            <!-- 行要素ここまで -->
         </div>
-        <!-- forブロック終了 -->
-        {% endfor %}
-        <!-- 行要素ここまで -->
+        <!-- グリッドシステムここまで -->
     </div>
-    <!-- グリッドシステムここまで -->
-</div>
 </div>
 
 
