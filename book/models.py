@@ -22,6 +22,7 @@ class Book(models.Model):
     )
     url = models.URLField(null=True, blank=True)
     user = models.ForeignKey("auth.User", on_delete=models.CASCADE)
+    views = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.title  # title = models.CharField(max_length=100)

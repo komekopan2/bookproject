@@ -25,6 +25,14 @@ class DetailBookView(LoginRequiredMixin, DetailView):
     template_name = "book/book_detail.html"
     model = Book
 
+    def get_object(self, queryset=None):
+        obj = super().get_object(queryset)
+
+        obj.views += 1
+        obj.save()
+
+        return obj
+
 
 class CreateBookView(LoginRequiredMixin, CreateView):
     template_name = "book/book_create.html"
