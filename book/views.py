@@ -29,7 +29,7 @@ class DetailBookView(LoginRequiredMixin, DetailView):
 class CreateBookView(LoginRequiredMixin, CreateView):
     template_name = "book/book_create.html"
     model = Book
-    fields = {"title", "text", "category", "thumbnail"}
+    fields = {"title", "text", "category", "thumbnail", "url"}
     success_url = reverse_lazy("index")
     # form_class = CreateBookForm
 
@@ -82,7 +82,7 @@ class DeleteBookView(LoginRequiredMixin, DeleteView):
 class UpdateBookView(LoginRequiredMixin, UpdateView):
     template_name = "book/book_update.html"
     model = Book
-    fields = {"title", "text", "category", "thumbnail"}
+    fields = {"title", "text", "category", "thumbnail", "url"}
     # success_url = reverse_lazy("index")
 
     def get_object(self, queryset=None):

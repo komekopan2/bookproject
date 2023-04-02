@@ -17,12 +17,16 @@
                 <!-- タイトル -->
                 <!-- <h2>{{object.title}}</h2> -->
                 <h2 class="card-title">{{object.title}}</h2>
+                <h6>(投稿ユーザー: {{object.user}})</h6>
                 <div class="px-2">
                     <span>
-                        (投稿ユーザー: {{object.user}})
+                        {% if object.url %}
+                        <p>{{object.url|urlize}}</p>
+                        {% endif %}
                     </span>
                     <!-- コメント -->
                     <p>{{object.text}}</p>
+
                 </div>
                 <br>
                 <!-- 1枚目の写真 -->

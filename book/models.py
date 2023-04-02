@@ -20,6 +20,7 @@ class Book(models.Model):
         max_length=100,
         choices=CATEGORY
     )
+    url = models.URLField(null=True, blank=True)
     user = models.ForeignKey("auth.User", on_delete=models.CASCADE)
 
     def __str__(self):
